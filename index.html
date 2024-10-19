@@ -159,11 +159,17 @@
             overflow: auto; /* Enable scroll if needed */
         }
 
-        #popup .tenor-gif-embed {
+        /* Added CSS to style the popup content and text */
+        #popup-content {
             margin: 5% auto;
-            display: block;
+            text-align: center;
             max-width: 80%;
-            height: auto;
+        }
+
+        #popup h2 {
+            color: #fff;
+            margin-top: 20px;
+            font-size: 24px;
         }
 
     </style>
@@ -184,8 +190,11 @@
 
     <!-- Popup div -->
     <div id="popup">
-        <div class="tenor-gif-embed" data-postid="21168766" data-share-method="host" data-aspect-ratio="1.09966" data-width="80%">
-            <a href="https://tenor.com/view/cat-kiss-gif-21168766">Cat Kiss GIF</a> from <a href="https://tenor.com/search/cat+kiss-gifs">Cat Kiss GIFs</a>
+        <div id="popup-content">
+            <div class="tenor-gif-embed" data-postid="21168766" data-share-method="host" data-aspect-ratio="1.09966" data-width="80%">
+                <a href="https://tenor.com/view/cat-kiss-gif-21168766">Cat Kiss GIF</a> from <a href="https://tenor.com/search/cat+kiss-gifs">Cat Kiss GIFs</a>
+            </div>
+            <h2>Our story isn't over yet!</h2>
         </div>
     </div>
 
