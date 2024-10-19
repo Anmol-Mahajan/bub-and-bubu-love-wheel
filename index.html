@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bub and Bubu Love Wheel</title>
+    <!-- Include Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <!-- Include Google Font 'Exo 2' -->
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -42,48 +44,41 @@
             overflow: hidden;
             border: 8px solid #fff;
             box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px, rgba(0, 0, 0, 0.05) 0px 3px 0px;
-            transform: rotate(0deg);
         }
 
         #inner-wheel {
             width: 100%;
             height: 100%;
             transition: all 6s cubic-bezier(0, .99, .44, .99);
+            border-radius: 50%;
+            background: conic-gradient(
+                from -45deg,
+                #c0392b 0deg 90deg,       /* Heart sector */
+                #2980b9 90deg 360deg      /* Broken heart sector */
+            );
+            position: relative;
         }
 
-        #wheel div.sec {
+        /* Icon styles */
+        #inner-wheel .fa {
             position: absolute;
-            width: 250px;
-            height: 125px;
-            overflow: hidden;
-            border-radius: 250px 250px 0 0;
-            transform-origin: 50% 100%;
-        }
-
-        #wheel div.sec:nth-child(1) {
-            background-color: #c0392b;
-            top: 0;
-            left: 0;
-            transform: rotate(0deg);
-        }
-
-        #wheel div.sec:nth-child(2) {
-            background-color: #2980b9;
-            top: 0;
-            left: 0;
-            transform: rotate(180deg);
-        }
-
-        #wheel div.sec .fa {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: rgba(0, 0, 0, 0.2);
-            z-index: 10000000;
             font-size: 36px;
+            color: rgba(0, 0, 0, 0.2);
             text-align: center;
             text-shadow: rgba(255, 255, 255, 0.1) 0px -1px 0px, rgba(0, 0, 0, 0.2) 0px 1px 0px;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Position the heart icon at the top center */
+        .heart-icon {
+            top: 15%;    /* Adjusted to be fully inside the wheel */
+            left: 50%;
+        }
+
+        /* Position the broken heart icon at the bottom center */
+        .broken-heart-icon {
+            top: 75%;    /* Adjusted to be fully inside the wheel */
+            left: 50%;
         }
 
         #spin {
@@ -152,7 +147,7 @@
             overflow: auto;
         }
 
-        /* Modified popup-content to split in two sections */
+        /* Popup content */
         #popup-content {
             margin: 5% auto;
             text-align: center;
@@ -175,22 +170,32 @@
             font-size: 24px;
             flex: 0 0 50%; /* Second half */
         }
+
+        /* Spin animation for the button */
+        #spin.spin {
+            animation: spin-animation 0.5s;
+        }
+
+        @keyframes spin-animation {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <h1>Spin and let it decide</h1>
+    <h1>Spin the wheel of love</h1>
 
     <div id="wrapper">
         <div id="wheel">
             <div id="inner-wheel">
-                <div class="sec" data-name="heart"><span class="fa fa-heart"></span></div>
-                <div class="sec" data-name="broken-heart"><span class="fa fa-heart-broken"></span></div>
+                <!-- Place icons directly inside the wheel -->
+                <span class="fa fa-heart heart-icon"></span>
+                <span class="fa fa-heart-broken broken-heart-icon"></span>
             </div>       
             <div id="spin">
                 <div id="inner-spin"></div>
             </div>
-            <div id="shine"></div>
         </div>
     </div>
 
@@ -209,24 +214,27 @@
     <!-- Include Tenor embed script -->
     <script type="text/javascript" src="https://tenor.com/embed.js"></script>
     <script>
-        var degree = 360 * 5;
-        var clicks = 0;
-
         $(document).ready(function(){
+            var spinsPerClick = 5; // Number of full spins per click
+            var degreePerSpin = 360;
+            var totalSpins = 0;
+
             $('#spin').click(function(){
-                clicks++;
-                var totalDegree = degree * clicks;
+                totalSpins += spinsPerClick;
+
+                // Calculate the total degree
+                var totalDegree = (degreePerSpin * totalSpins);
 
                 // Rotate the wheel
                 $('#inner-wheel').css({
-                    'transform': 'rotate(' + totalDegree + 'deg)'          
+                    'transform': 'rotate(' + totalDegree + 'deg)'
                 });
 
-                // Optional: Add spin animation to the button
+                // Add spin animation to the button
                 $('#spin').addClass('spin'); 
                 setTimeout(function () { 
                     $('#spin').removeClass('spin');
-                }, 100);
+                }, 500);
 
                 // Display the popup after the wheel stops spinning
                 $('#inner-wheel').one('transitionend webkitTransitionEnd oTransitionEnd', function(){
