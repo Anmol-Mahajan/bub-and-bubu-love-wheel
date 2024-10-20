@@ -144,7 +144,7 @@
         }
 
         /* --- Popup Overlay Styles --- */
-        #popup {
+        #popup, #message-popup {
             display: none;
             position: fixed;
             z-index: 10000;
@@ -157,7 +157,7 @@
         }
 
         /* --- Popup Content Styles --- */
-        #popup-content {
+        #popup-content, #message-content {
             margin: 5% auto;
             text-align: center;
             max-width: 80%;
@@ -166,23 +166,26 @@
             justify-content: center;
             align-items: center; 
             height: 80vh;
+            background: #333;
+            padding: 20px;
+            color: #fff;
+            border-radius: 10px;
         }
 
-        #popup-content iframe, .tenor-gif-embed {
+        #popup-content iframe, .tenor-gif-embed, #message-content p, #message-content ul {
             max-width: 100%;
             height: auto;
             flex: 0 0 auto;
         }
 
-        #popup h2 {
+        #popup h2, #message-content h2 {
             color: #fff;
             margin-top: 20px;
             font-size: 24px;
             flex: 0 0 auto; /* Adjusted to fit content */
         }
 
-     
-        #popup-content video {
+        #popup-content video, #message-content video {
             max-width: 100%;
             height: auto;
             margin-top: 20px; 
@@ -197,11 +200,48 @@
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
+
+        /* View Message Button */
+        #view-message-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #2980b9;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        #view-message-btn:hover {
+            background-color: #3498db;
+        }
+
+        /* Hide Message Button */
+        #hide-message-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #hide-message-btn:hover {
+            background-color: #c0392b;
+        }
+
     </style>
 </head>
 <body>
     <!-- Header -->
     <h1>Spin the wheel of love</h1>
+
+    <!-- View Message Button -->
+    <button id="view-message-btn">View Message</button>
 
     <!-- Wheel Container -->
     <div id="wrapper">
@@ -234,8 +274,40 @@
             </video>
         </div>
     </div>
+z
+    <!-- Message Popup Div -->
+    <div id="message-popup">
+        <div id="message-content">
+            <h2>Message for You</h2>
+            <p style="text-align: left; line-height: 1.4;">I know that we can't always love each other equally every moment. There will be times when one of us needs to take the lead, and that could be either you or me. I am ready to step up and carry us through far as long as needed. What matters most is that you're here with me and that you trust me as we pull this together. I felt loved doing all the simple things in our relationship.</p>
+            <ul style="text-align: left;line-height: 1;">
+                  <li>I want to drop you off at the bus stop or train station, or drive you to work.</li>
+                  <li>I want to leave for work kissing on your forehead.</li>
+                  <li>I want to pick you up from office whenever you are stressed or having a bad day.</li>
+                  <li>I want to keep notes of things that you slide in conversations and make them happen as soon as I capable to.</li>
+                  <li>I want to tie your shoelaces in the busiest streets.</li>
+                  <li>I want to get you flowers every week.</li>
+                  <li>I want you to shop clothes for me and I wear them everyday.</li>
+                  <li>I want to cook Mexican food with you and have the best guacamole.</li>
+                  <li>I want to cook for you when you come home late from work.</li>
+                  <li>I want to become a full-time vegetarian with you.</li>
+                  <li>I want to open a joint bank account with you.</li>
+                  <li>I want us to design our home together one room at a time.</li>
+                  <li>I want to travel with you and occasionally convince you to ride rollercoasters.</li>
+                  <li>I want our kids to be proud of their mother and see you as their role model.</li>
+                  <li>I want us take our kids to beach.</li>
+                  <li>I want our kids to be as imaginative as you.</li>
+                  <li>I want our kids to know how madly their father is in love with you.</li>
+                  <li>I want to be the one to keep you hydrated when you are getting drunk at a party.</li>
+                  <li>I want to eat in one plate at a wedding with you.</li>
+                  <li>I want to keep you as my wallpaper on every device.</li>
+            </ul>
 
-   
+            <!-- Hide Message Button -->
+            <button id="hide-message-btn">Hide Message</button>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script type="text/javascript" src="https://tenor.com/embed.js"></script>
@@ -245,32 +317,46 @@
             var degreePerSpin = 360;
             var totalSpins = 0;
 
+            // Spin wheel click handler
             $('#spin').click(function(){
                 totalSpins += spinsPerClick;
 
-                
                 var totalDegree = (degreePerSpin * totalSpins);
 
-               
                 $('#inner-wheel').css({
                     'transform': 'rotate(' + totalDegree + 'deg)'
                 });
 
-                
                 $('#spin').addClass('spin'); 
                 setTimeout(function () { 
                     $('#spin').removeClass('spin');
                 }, 500);
 
-               
                 $('#inner-wheel').one('transitionend webkitTransitionEnd oTransitionEnd', function(){
                     $('#popup').css('display', 'block');
                 });
             });
 
-       
+            // Popup close on click
             $('#popup').click(function(){
                 $(this).css('display', 'none');
+            });
+
+            // View Message button click handler
+            $('#view-message-btn').click(function(){
+                $('#message-popup').css('display', 'block');
+            });
+
+            // Hide Message button click handler
+            $('#hide-message-btn').click(function(){
+                $('#message-popup').css('display', 'none');
+            });
+
+            // Also allow closing message popup when the overlay is clicked
+            $('#message-popup').click(function(e) {
+                if (e.target.id === 'message-popup') { // Make sure the background is clicked, not the content
+                    $(this).css('display', 'none');
+                }
             });
         });
     </script>
