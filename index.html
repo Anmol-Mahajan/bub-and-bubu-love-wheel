@@ -59,8 +59,8 @@
             border-radius: 50%;
             background: conic-gradient(
                 from -45deg,
-                #c0392b 0deg 90deg,       /* Heart sector */
-                #2980b9 90deg 360deg      /* Broken heart sector */
+                #c0392b 0deg 90deg,      
+                #2980b9 90deg 360deg      
             );
             position: relative;
         }
@@ -77,13 +77,13 @@
 
         /* --- Position the heart icon at the top center --- */
         .heart-icon {
-            top: 15%;    /* Adjusted to be fully inside the wheel */
+            top: 15%;   
             left: 50%;
         }
 
         /* --- Position the broken heart icon at the bottom center --- */
         .broken-heart-icon {
-            top: 75%;    /* Adjusted to be fully inside the wheel */
+            top: 75%;   
             left: 50%;
         }
 
@@ -160,20 +160,17 @@
         #popup-content {
             margin: 5% auto;
             text-align: center;
-            max-width: 50%; /* Updated to limit the width */
+            max-width: 80%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; /* Center content horizontally */
-            height: auto; /* Adjusted to prevent occupying full screen */
-            padding: 20px;
-            background-color: #333; /* Optional: Add background for popup content */
-            border-radius: 10px; /* Rounded corners */
+            align-items: center; 
+            height: 80vh;
         }
 
         #popup-content iframe, .tenor-gif-embed {
             max-width: 100%;
-            height: auto; /* Adjust height to content */
+            height: auto;
             flex: 0 0 auto;
         }
 
@@ -184,17 +181,14 @@
             flex: 0 0 auto; /* Adjusted to fit content */
         }
 
-        /* --- Video Styles --- */
+     
         #popup-content video {
-            width: 80%; /* Updated to control video size */
+            max-width: 100%;
             height: auto;
-            margin-top: 20px; /* Adds space between the message and the video */
+            margin-top: 20px; 
             flex: 0 0 auto;
-            border: 3px solid #fff; /* Optional: Add a white border around the video */
-            border-radius: 10px; /* Rounded corners for the video */
         }
 
-        /* --- Spin Animation for the Button --- */
         #spin.spin {
             animation: spin-animation 0.5s;
         }
@@ -233,48 +227,48 @@
             <!-- Message -->
             <h2>Our story isn't over yet!</h2>
             <!-- Video Section -->
-            <p class="click-to-play">Click to play</p>
+            <p class="click-to-play" style="margin-bottom: 15px; font-weight: bold;">Click to play</p>
             <video controls>
-                <source src="/Users/anmolmahajan/Downloads/bub.mp4" type="video/mp4">
+                <source src="bub.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
     </div>
 
-    <!-- Include jQuery Library -->
+   
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Include Tenor Embed Script -->
+
     <script type="text/javascript" src="https://tenor.com/embed.js"></script>
     <script>
         $(document).ready(function(){
-            var spinsPerClick = 5; // Number of full spins per click
+            var spinsPerClick = 5; 
             var degreePerSpin = 360;
             var totalSpins = 0;
 
             $('#spin').click(function(){
                 totalSpins += spinsPerClick;
 
-                // Calculate the total degree
+                
                 var totalDegree = (degreePerSpin * totalSpins);
 
-                // Rotate the wheel
+               
                 $('#inner-wheel').css({
                     'transform': 'rotate(' + totalDegree + 'deg)'
                 });
 
-                // Add spin animation to the button
+                
                 $('#spin').addClass('spin'); 
                 setTimeout(function () { 
                     $('#spin').removeClass('spin');
                 }, 500);
 
-                // Display the popup after the wheel stops spinning
+               
                 $('#inner-wheel').one('transitionend webkitTransitionEnd oTransitionEnd', function(){
                     $('#popup').css('display', 'block');
                 });
             });
 
-            // Hide the popup when clicked
+       
             $('#popup').click(function(){
                 $(this).css('display', 'none');
             });
