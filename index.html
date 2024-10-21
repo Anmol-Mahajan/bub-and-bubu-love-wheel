@@ -234,6 +234,20 @@
             background-color: #c0392b;
         }
 
+        /* Flexbox container for the GIFs */
+        .gif-container {
+            display: flex;
+            justify-content: space-between; /* Ensure spacing between GIFs */
+            gap: 10px; /* Adjusts the gap between the GIFs */
+            width: 100%;
+        }
+
+        /* Individual GIF styling */
+        .tenor-gif-embed {
+            flex: 1; /* Ensure each GIF takes up equal space */
+            max-width: 33%; /* Limit each GIF to one-third of the container width */
+            height: auto; /* Maintain aspect ratio */
+        }
     </style>
 </head>
 <body>
@@ -244,11 +258,11 @@
     <button id="view-message-btn">View Message</button>
 
     <!-- Spotify Embed -->
-<iframe style="border-radius:12px; margin-top: 20px;" 
-    src="https://open.spotify.com/embed/track/5XeFesFbtLpXzIVDNQP22n?utm_source=generator" 
-    width="100%" height="352" frameborder="0" allowfullscreen="" 
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-</iframe>
+    <iframe style="border-radius:12px; margin-top: 20px;" 
+        src="https://open.spotify.com/embed/track/5XeFesFbtLpXzIVDNQP22n?utm_source=generator" 
+        width="100%" height="352" frameborder="0" allowfullscreen="" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+    </iframe>
 
     <!-- Wheel Container -->
     <div id="wrapper">
@@ -267,10 +281,24 @@
     <!-- Popup Div -->
     <div id="popup">
         <div id="popup-content">
-            <!-- Embedded GIF -->
-            <div class="tenor-gif-embed" data-postid="21168766" data-share-method="host" data-aspect-ratio="1.09966" data-width="100%">
-                <a href="https://tenor.com/view/cat-kiss-gif-21168766">Cat Kiss GIF</a> from <a href="https://tenor.com/search/cat+kiss-gifs">Cat Kiss GIFs</a>
+            <!-- Flex Container for GIFs -->
+            <div class="gif-container">
+                <!-- Embedded GIF 1 -->
+                <div class="tenor-gif-embed" data-postid="21168766" data-share-method="host" data-aspect-ratio="1.09966" data-width="33%">
+                    <a href="https://tenor.com/view/cat-kiss-gif-21168766">Cat Kiss GIF</a> from <a href="https://tenor.com/search/cat+kiss-gifs">Cat Kiss GIFs</a>
+                </div>
+
+                <!-- Embedded GIF 2 -->
+                <div class="tenor-gif-embed" data-postid="13104553711097041062" data-share-method="host" data-aspect-ratio="0.799197" data-width="33%">
+                    <a href="https://tenor.com/view/sad-couple-love-kiss-gif-13104553711097041062">Sad Couple GIF</a> from <a href="https://tenor.com/search/sad-gifs">Sad GIFs</a>
+                </div>
+
+                <!-- Embedded GIF 3 -->
+                <div class="tenor-gif-embed" data-postid="18059553370350307210" data-share-method="host" data-aspect-ratio="0.56266" data-width="33%">
+                    <a href="https://tenor.com/view/cat-dance-dancing-cat-chinese-dancing-cat-funny-cat-meme-cat-gif-18059553370350307210">Cat Dance GIF</a> from <a href="https://tenor.com/search/cat+dance-gifs">Cat Dance GIFs</a>
+                </div>
             </div>
+
             <!-- Message -->
             <h2>Our story isn't over yet!</h2>
             <!-- Video Section -->
