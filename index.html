@@ -234,20 +234,6 @@
             background-color: #c0392b;
         }
 
-        /* Flexbox container for the GIFs */
-        .gif-container {
-            display: flex;
-            justify-content: space-between; /* Ensure spacing between GIFs */
-            gap: 10px; /* Adjusts the gap between the GIFs */
-            width: 100%;
-        }
-
-        /* Individual GIF styling */
-        .tenor-gif-embed {
-            flex: 1; /* Ensure each GIF takes up equal space */
-            max-width: 33%; /* Limit each GIF to one-third of the container width */
-            height: auto; /* Maintain aspect ratio */
-        }
     </style>
 </head>
 <body>
@@ -258,11 +244,11 @@
     <button id="view-message-btn">View Message</button>
 
     <!-- Spotify Embed -->
-    <iframe style="border-radius:12px; margin-top: 20px;" 
-        src="https://open.spotify.com/embed/track/5XeFesFbtLpXzIVDNQP22n?utm_source=generator" 
-        width="100%" height="352" frameborder="0" allowfullscreen="" 
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-    </iframe>
+<iframe style="border-radius:12px; margin-top: 20px;" 
+    src="https://open.spotify.com/embed/track/5XeFesFbtLpXzIVDNQP22n?utm_source=generator" 
+    width="100%" height="352" frameborder="0" allowfullscreen="" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+</iframe>
 
     <!-- Wheel Container -->
     <div id="wrapper">
@@ -281,24 +267,10 @@
     <!-- Popup Div -->
     <div id="popup">
         <div id="popup-content">
-            <!-- Flex Container for GIFs -->
-            <div class="gif-container">
-                <!-- Embedded GIF 1 -->
-                <div class="tenor-gif-embed" data-postid="21168766" data-share-method="host" data-aspect-ratio="1.09966" data-width="33%">
-                    <a href="https://tenor.com/view/cat-kiss-gif-21168766">Cat Kiss GIF</a> from <a href="https://tenor.com/search/cat+kiss-gifs">Cat Kiss GIFs</a>
-                </div>
-
-                <!-- Embedded GIF 2 -->
-                <div class="tenor-gif-embed" data-postid="13104553711097041062" data-share-method="host" data-aspect-ratio="0.799197" data-width="33%">
-                    <a href="https://tenor.com/view/sad-couple-love-kiss-gif-13104553711097041062">Sad Couple GIF</a> from <a href="https://tenor.com/search/sad-gifs">Sad GIFs</a>
-                </div>
-
-                <!-- Embedded GIF 3 -->
-                <div class="tenor-gif-embed" data-postid="18059553370350307210" data-share-method="host" data-aspect-ratio="0.56266" data-width="33%">
-                    <a href="https://tenor.com/view/cat-dance-dancing-cat-chinese-dancing-cat-funny-cat-meme-cat-gif-18059553370350307210">Cat Dance GIF</a> from <a href="https://tenor.com/search/cat+dance-gifs">Cat Dance GIFs</a>
-                </div>
+            <!-- Embedded GIF -->
+            <div class="tenor-gif-embed" data-postid="21168766" data-share-method="host" data-aspect-ratio="1.09966" data-width="100%">
+                <a href="https://tenor.com/view/cat-kiss-gif-21168766">Cat Kiss GIF</a> from <a href="https://tenor.com/search/cat+kiss-gifs">Cat Kiss GIFs</a>
             </div>
-
             <!-- Message -->
             <h2>Our story isn't over yet!</h2>
             <!-- Video Section -->
@@ -314,19 +286,28 @@
     <div id="message-popup">
         <div id="message-content">
             <h2>Message for Us</h2>
-            <p style="text-align: left; line-height: 1.4;font-size: 20px;">I know that we can't always love each other equally every moment. 
+            <p style="text-align: left; line-height: 1.4;">I know that we can't always love each other equally every moment. 
                 There will be times when one of us needs to take the lead, and that could be either you or me. 
                 I am ready to step up and carry us through far as long as needed. 
-                What matters most is that we are together and that we trust each other to make it through.
+                What matters most is that you're with me and that you trust me as we pull this together. 
                 You could have handled me a bit better this one time when I got insecure for you. 
-                We are not in our twenties that we can move on and find something later in point. 
-                We took a lot of time learning and caring about each other, it should not be thrown away to start afresh. 
-                I can understand you being busy but I cannot understand sudden change in behaviour of not wanting to deal with me. 
-                If we stayed with each other when there were so many uncertainties and struggles, then what happened now when things are finally taking a turn in the right direction for making a future together.
+                The whole point was to get you out of India sooner than later. I used to tell you that you are among my greated motivation to make that happen.
+                It was not just about me. Now that I will be in a postition to make it happen as promosied, you left me alone.
+                It had nothing to with hurting your self-respect. If I can proudly say to move around anywhere in the world with you and start again. 
+                How come self-respect come between us? Your family knows potential, who else matter for that case then?
+                I did not ask you to leave your job or anything. It would have been good only by the time we get married next year and you have experience with a global company when you comeback to the United Kingdom.
+                We are not in our twenties that we can move on and find something later in point. We took a lot of time learning and caring about each other,
+                it should not be thrown away to start afresh. I cannot say about you, it's not possible for me to care for someone and understand anyone else
+                with the same love. You want to focus on your career, you do but you cannot let go of the plans we had together. You don't randomly go and discuss your life together with strangers. 
+                I can understand you being busy but I cannot understand sudden change in behaviour of not wanting to deal with me. If we stayed with each other in worst times, 
+                then what happened now when things can finally take a turn for good.
+                
                 I promise you that I am going to wait for you to make things right together.
+                
                 I felt loved doing all the simple things in our relationship and it will always be with you.</p>
             
-            <ul style="text-align: left;line-height: 1;font-size: 20px;">
+            
+            <ul style="text-align: left;line-height: 1;">
                   <li>I want to drop you off at the bus stop or train station, or drive you to work.</li>
                   <li>I want to leave for work kissing on your forehead.</li>
                   <li>I want to pick you up from office whenever you are stressed or having a bad day.</li>
@@ -353,6 +334,12 @@
             <button id="hide-message-btn">Hide Message</button>
         </div>
     </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+    <button id="contact-btn" style="padding: 10px 20px; background-color: #27ae60; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 18px;">
+        Contact Me
+    </button>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -405,6 +392,13 @@
                 }
             });
         });
+
+    
     </script>
+    <script >
+        $('#contact-btn').click(function() {
+        // Redirect to a phone number
+        window.location.href = "tel:+447867107726";  // Replace with your actual phone number
+    });</script>
 </body>
 </html>
